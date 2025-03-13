@@ -1,23 +1,36 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'g++ main/hello.cpp -o main/hello_exec'
             }
         }
+
         stage('Test') {
             steps {
                 sh './main/hello_exec'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying Application...'
             }
         }
     }
+
     post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
         failure {
             echo 'Pipeline failed!'
         }

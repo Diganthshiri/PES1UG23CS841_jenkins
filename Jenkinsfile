@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build application') {
             steps {
-                sh 'g++ -o PES1UG23CS841-1 main.cpp'
+                sh 'g++ -o PES1UG23CS841-1 mai.cpp'
             }
         }
         stage('Test application') {
